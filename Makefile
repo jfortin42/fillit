@@ -6,7 +6,7 @@
 #    By: jgan <jgan@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 21:57:41 by jgan              #+#    #+#              #
-#    Updated: 2015/12/17 19:05:59 by jgan             ###   ########.fr        #
+#    Updated: 2015/12/18 14:02:00 by jfortin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,9 +37,12 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	@gcc $(FLAG) -o $(NAME) $(SRC)
+$(NAME): $(OBJ)
+	@gcc $(FLAG) -o $(NAME) $(OBJ)
 	@echo "fillit created"
+
+%.o: %.c
+	@gcc $(FLAG) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
